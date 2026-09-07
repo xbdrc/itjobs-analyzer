@@ -1,0 +1,25 @@
+name: IT Job Market Analysis Cron Job
+
+on:
+  schedule:
+    - cron: '0 20 * * *'  # Runs daily at 20:00 UTC (which is 19:00 Portugal time during standard time)
+
+jobs:
+  job_market_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.3'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run job market analysis script
+        run: python itmarket_cj.py
