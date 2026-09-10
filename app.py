@@ -265,7 +265,7 @@ def main():
             </div>
             <div>
                 Developed by  
-                <a href="https://xbdrcx.github.io/" target="_blank">
+                <a href="https://xbdrc.github.io/" target="_blank">
                     <img src="data:image/x-icon;base64,{base64.b64encode(open("favicon.ico", "rb").read()).decode()}" alt="Bruno Cruz" title="Bruno Cruz" width="42">
                 </a>
             </div>
@@ -294,7 +294,7 @@ def main():
         job_offers, company_counts, location_distribution = [], {}, {}
         tech_distribution, role_distribution = {}, {}
         full_time_count, part_time_count = 0, 0  # New counters
-        level_distribution = {"Junior": 0, "Mid-level": 0, "Senior": 0, "Unknown": 0}  # Track levels
+        level_distribution = {"Junior": 0, "Mid-level": 0, "Senior": 0, "Not Classified": 0}  # Track levels
 
         for job in jobs:
             roles, techs = extract_entities(job["title"])
@@ -359,7 +359,7 @@ def main():
             # Show top 3 locations
             top_loc = sorted(location_distribution.items(), key=lambda x: x[1], reverse=True)[:3]
             top_locs_df = pd.DataFrame(top_loc, columns=["Location", "Count"])  # Explicitly set the column names
-            st.write("### TOP Locations")
+            st.write("### Top Locations")
             st.dataframe(top_locs_df, hide_index=True)
             
         st.html("<hr>")
