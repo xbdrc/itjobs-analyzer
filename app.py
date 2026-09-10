@@ -294,7 +294,7 @@ def main():
         job_offers, company_counts, location_distribution = [], {}, {}
         tech_distribution, role_distribution = {}, {}
         full_time_count, part_time_count = 0, 0  # New counters
-        level_distribution = {"Junior": 0, "Mid-level": 0, "Senior": 0, "Not Classified": 0}  # Track levels
+        level_distribution = {"Junior": 0, "Mid-level": 0, "Senior": 0, "Unknown": 0}  # Track levels
 
         for job in jobs:
             roles, techs = extract_entities(job["title"])
