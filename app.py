@@ -310,7 +310,7 @@ def main():
                 location_name = location["name"]
                 location_distribution[location_name] = location_distribution.get(location_name, 0) + 1
 
-            allow_remote = "✅" if job["allowRemote"] else "❌"
+            allow_remote = "❌" if job["work_model"] == 0 else "✅"
             job_type = "Part-Time"  # Default to Part-Time
             if "types" in job and job["types"]:
                 job_type = "Full-Time" if job["types"][0]["id"] == "1" else "Part-Time"  # Access job type
@@ -365,7 +365,7 @@ def main():
         st.html("<hr>")
 
         # Remote vs Non-Remote job count
-        remote_count = sum(1 for job in jobs if job["allowRemote"])
+        remote_count = sum(1 for job in jobs if job["work_model"] != 0)
         non_remote_count = len(jobs) - remote_count
 
         col1, col2 = st.columns(2)
